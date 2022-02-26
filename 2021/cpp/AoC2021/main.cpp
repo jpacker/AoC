@@ -23,7 +23,7 @@ std::string DayFilePath(std::string_view dayStr)
 
 int main()
 {
-	for (int i = 0; i < days.size(); i++)
+	for (std::size_t i = 0; i < days.size(); i++)
 	{
 		const std::string dayFilePath = DayFilePath(dayStrings[i]);
 		const auto input = SlurpInput(dayFilePath);
