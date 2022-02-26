@@ -6,5 +6,3 @@
 
 
 Solution day1(std::string_view input);
-
-
