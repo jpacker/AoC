@@ -53,6 +53,8 @@ Solution day1(std::string_view input)
 {
 	Solution sol;
 
+	// Idea... iterate just once.. does it make it faster? It will be less clear
+
 	sol.part1 = NumIncreasesSlidingWindow_<1>(input);
 	sol.part2 = NumIncreasesSlidingWindow_<3>(input);
 
