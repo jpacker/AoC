@@ -14,13 +14,15 @@ namespace
 		
 		unsigned numIncreases = 0;
 
+		const auto endPtr = input.data() + input.size();
+
 		unsigned depth;
-		auto parseRes = std::from_chars(input.data(), input.data() + input.size(), depth);
+		auto parseRes = std::from_chars(input.data(), endPtr, depth);
 		for (unsigned i = 0; i < WindowSize && parseRes.ec != std::errc::invalid_argument; ++i)
 		{
 			buff[i] = depth;
 			sum += depth;
-			parseRes = std::from_chars(parseRes.ptr + 1, input.data() + input.size(), depth);
+			parseRes = std::from_chars(parseRes.ptr + 1, endPtr, depth);
 		}
 		unsigned previousSum = sum;
 
@@ -40,7 +42,7 @@ namespace
 			{
 				buff[i - 1] = buff[i];
 			}
-			parseRes = std::from_chars(parseRes.ptr + 1, input.data() + input.size(), depth);
+			parseRes = std::from_chars(parseRes.ptr + 1, endPtr, depth);
 		}
 
 		return numIncreases;
