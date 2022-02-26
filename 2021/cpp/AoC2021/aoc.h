@@ -4,8 +4,8 @@
 
 struct Solution
 {
-	int part1 = 0;
-	int part2 = 0;
+	unsigned part1 = 0;
+	unsigned part2 = 0;
 };
 
 std::string SlurpInput(std::string_view fileName);
