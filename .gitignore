@@ -2,6 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/2021/cpp/AoC2021/.vs/AoC2021/v17
+/2021/cpp/AoC2021/.vs
 /2021/cpp/AoC2021/x64
 *.vcxproj.user
+
