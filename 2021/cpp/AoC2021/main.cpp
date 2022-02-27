@@ -8,7 +8,7 @@
 
 constexpr std::array days =
 {
-	&day1, &day2
+	&day1, &day2, &day3,
 };
 
 static std::string DayFilePath(std::size_t day)
