@@ -14,25 +14,13 @@ namespace
 	class ColumnCounts
 	{
 	public:
-
-		void AddOne()
-		{
-			++countOnes_;
-		}
-
-		void AddZero()
-		{
-			++countZeros_;
-		}
-
 		Bit MostCommon() const
 		{
-			return countOnes_ > countZeros_ ? Bit::One : Bit::Zero;
+			return countOnes > countZeros ? Bit::One : Bit::Zero;
 		}
 
-	private:
-		unsigned countOnes_ = 0;
-		unsigned countZeros_ = 0;
+		unsigned countOnes = 0;
+		unsigned countZeros = 0;
 	};
 
 	unsigned Gamma_(const std::vector<ColumnCounts>& columns)
@@ -78,15 +66,8 @@ Solution day3(std::string_view input)
 	{
 		for (auto& column : columns)
 		{
-			switch (*it)
-			{
-			case '0':
-				column.AddZero();
-				break;
-			case '1':
-				column.AddOne();
-				break;
-			}
+			column.countOnes += *it != '0';
+			column.countZeros += *it == '0';
 			++it;
 		}
 		if (it != endIt)
