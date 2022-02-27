@@ -10,5 +10,6 @@ std::string SlurpInput(std::string_view fileName)
 	std::string contents(fileSize, ' ');
 	std::ifstream file(p);
 	file.read(contents.data(), fileSize);
+	contents.resize(file.gcount());
 	return contents;
 }
