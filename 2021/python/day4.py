@@ -12,7 +12,7 @@ class Board:
 
 def new_bingo_board(rows, cols):
     return Board(
-        [[0 for x in range(cols)] for y in range(rows)],
+        [[] for y in range(rows)],
         [[False for x in range(cols)] for y in range(rows)]
     )
          
