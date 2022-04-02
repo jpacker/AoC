@@ -1,46 +1,37 @@
 from dataclasses import dataclass
-from functools import reduce
-from itertools import chain
+from itertools import chain, compress
+from operator import not_
+from time import perf_counter_ns
 
 
 @dataclass
-class BoardEntry:
-    number: int
-    called: bool
-
-board_rows, board_cols = (5, 5)
-
-def transpose(array_2d):
-    return [list(x) for x in zip(*array_2d)]
+class Board:
+    numbers: list[list[int]]
+    called: list[list[bool]]
 
 
 def new_bingo_board(rows, cols):
-    return [[BoardEntry(0, False) for x in range(cols)] for y in range(rows)]
+    return Board(
+        [[0 for x in range(cols)] for y in range(rows)],
+        [[False for x in range(cols)] for y in range(rows)]
+    )
+         
+
+def bingo_board_wins(board: Board):
+    for row in board.called:
+        if all(row):
+            return True
+    for col in zip(*board.called):
+        if all(col):
+            return True
+    return False
 
 
-def board_row_wins(row):
-    return all(map(lambda entry: entry.called, row))
+def sum_uncalled_numbers(board: list[Board]):
+    return sum(compress(chain.from_iterable(board.numbers), map(not_, chain.from_iterable(board.called))))
 
 
-def bingo_board_wins(board):
-    def any_row_wins(b):
-        return any(map(lambda row: board_row_wins(row), b))
-
-    if any_row_wins(board):
-        return board
-    else:
-        transposed_board = transpose(board)
-        if any_row_wins(transposed_board):
-            return board
-        else:
-            return None
-
-
-def sum_uncalled_numbers(board):
-    return reduce(lambda acc, e: acc + e.number, filter(lambda e: not e.called, chain.from_iterable(board)), 0)
-
-
-def read_input(board_rows, board_cols, boards):
+def read_input(board_rows: int, board_cols: int, boards : list[Board]):
     with open(r'../inputs/day4.txt') as input:
         bingo_calls = [int(s.strip()) for s in input.readline().split(',')]
         next(input)
@@ -49,8 +40,7 @@ def read_input(board_rows, board_cols, boards):
         for l in input:
             row_nums = [int(s.strip()) for s in l.split()]
             if len(row_nums):
-                for i, v in enumerate(row_nums):
-                    boards[board_num][row_num][i].number = v
+                boards[board_num].numbers[row_num] = row_nums.copy()
                 row_num += 1
             else:
                 boards.append(new_bingo_board(board_rows, board_cols))
@@ -58,28 +48,31 @@ def read_input(board_rows, board_cols, boards):
                 row_num = 0
     return bingo_calls
 
-def process_bingo_calls(bingo_calls, boards):
+
+def process_bingo_calls(bingo_calls, boards: list[Board]):
     for call in bingo_calls:
         for board in boards:
-            for row in board:
-                for entry in row:
-                    if entry.number == call:
-                        entry.called = True
-            winner = bingo_board_wins(board)
-            if winner is not None:
-                break
-        if winner is not None:
-            break
-    if winner is not None:
-        return (winner, call)
-    else:
-        return None
+            for r, row in enumerate(board.numbers):
+                for i, number in enumerate(row):
+                    if number == call:
+                        board.called[r][i] = True
+            if bingo_board_wins(board):
+                return (board, call)
+    return None
 
-if __name__ == "__main__":
+
+def day1():
+    board_rows, board_cols = (5, 5)
+    start = perf_counter_ns()
     bingo_calls = []
     boards = [new_bingo_board(board_rows, board_cols)]
     bingo_calls = read_input(board_rows, board_cols, boards)
     winner = process_bingo_calls(bingo_calls, boards)
-
     sum_unmarked = sum_uncalled_numbers(winner[0])
+    end = perf_counter_ns()
+    print(f'{(end - start)/1000} usecs')
     print(sum_unmarked * winner[1])
+
+
+if __name__ == "__main__":
+    day1()
