@@ -61,7 +61,7 @@ def process_bingo_calls(bingo_calls, boards: list[Board]):
     return None
 
 
-def day1():
+def part1():
     board_rows, board_cols = (5, 5)
     start = perf_counter_ns()
     bingo_calls = []
@@ -75,4 +75,4 @@ def day1():
 
 
 if __name__ == "__main__":
-    day1()
+    part1()
