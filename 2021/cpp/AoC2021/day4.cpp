@@ -4,7 +4,7 @@
 #include <array>
 #include <cassert>
 #include <charconv>
-#include <ranges>
+#include <numeric>
 #include <vector>
 
 
@@ -88,12 +88,7 @@ namespace
 
 	int BoardSum_(const Board& board)
 	{
-		int sum = 0;
-		for (int i = 0; i < std::ssize(board); ++i)
-		{
-			sum += board[i];
-		}
-		return sum;
+		return std::accumulate(board.begin(), board.end(), 0);
 	}
 
 	bool IsBoardWin_(const Board& board)
