@@ -60,7 +60,7 @@ namespace
 		state.board.fill(-1);
 		auto beginPtr = remainingInput.data();
 		const auto endPtr = remainingInput.data() + remainingInput.size();
-		for (int i = 0; i < 25 && beginPtr != endPtr; ++i)
+		for (int i = 0; i < std::ssize(state.board) && beginPtr != endPtr; ++i)
 		{
 			beginPtr = StripLeadingAsciiWhitespace_(std::string_view(beginPtr, endPtr)).data();
 			int call = -1;
