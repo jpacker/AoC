@@ -74,7 +74,7 @@ namespace
 
 	unsigned Epsilon_(unsigned gamma, std::size_t numColumns)
 	{
-		return ~gamma & Mask_(numColumns);
+		return ~gamma & Mask_(static_cast<unsigned>(numColumns));
 	}
 
 	std::vector<std::string_view> ParsedInput_(std::string_view input)

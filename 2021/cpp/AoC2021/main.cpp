@@ -8,16 +8,12 @@
 
 constexpr std::array days =
 {
-	&day1, &day2, &day3,
+	&day1, &day2, &day3, &day4,
 };
 
 static std::string DayFilePath(std::size_t day)
 {
-#ifdef __clang__
-	return std::string("../../inputs/day") + std::to_string(day) + ".txt";
-#else
 	return std::format("../../inputs/day{}.txt", day);
-#endif
 }
 
 int main()

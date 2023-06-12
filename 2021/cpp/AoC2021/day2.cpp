@@ -81,21 +81,21 @@ Solution day2(std::string_view input)
 		const auto endPtr = input.data() + input.size();
 		while (inputPtr < endPtr)
 		{
-			int skip = 0;
+			std::int64_t skip = 0;
 			Direction dir;
 			switch (*inputPtr)
 			{
 			case 'f':
 				dir = Direction::Forward;
-				skip = "forward "sv.size();
+				skip = std::ssize("forward "sv);
 				break;
 			case 'd':
 				dir = Direction::Down;
-				skip = "down "sv.size();
+				skip = std::ssize("down "sv);
 				break;
 			case 'u':
 				dir = Direction::Up;
-				skip = "up "sv.size();
+				skip = std::ssize("up "sv);
 				break;
 			}
 			if (skip == 0)
