@@ -8,7 +8,7 @@
 
 constexpr std::array days =
 {
-	&day1, &day2, &day3, &day4,
+	&day1, &day2, &day3, &day4, &day5,
 };
 
 static std::string DayFilePath(std::size_t day)
@@ -23,9 +23,9 @@ int main()
 		const std::string dayFilePath = DayFilePath(i + 1);
 		const auto input = SlurpInput(dayFilePath);
 
-		const auto start = std::chrono::high_resolution_clock::now();
+		const auto start = std::chrono::steady_clock::now();
 		auto sol = days[i](input);
-		const auto end = std::chrono::high_resolution_clock::now();
+		const auto end = std::chrono::steady_clock::now();
 
 		auto timeInMicroSec = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 

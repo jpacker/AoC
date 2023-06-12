@@ -58,7 +58,6 @@ namespace
 	{
 		state = BoardState();
 		state.board.fill(-1);
-		remainingInput = StripLeadingAsciiWhitespace_(remainingInput);
 		auto beginPtr = remainingInput.data();
 		const auto endPtr = remainingInput.data() + remainingInput.size();
 		for (int i = 0; i < 25 && beginPtr != endPtr; ++i)
