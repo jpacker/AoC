@@ -13,7 +13,7 @@
     (if (< acc 0)
         i
         (let ((front (string-take str 1)) (back (string-drop str 1)))
-          (if (equal? front "(")
+          (if (string=? front "(")
               (loop (+ 1 i) back (+ 1 acc))
               (loop (+ 1 i) back (- acc 1)))))))
 
