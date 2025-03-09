@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <AssemblyName>Advent2015</AssemblyName>
+        <RootNamespace>2015</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Days\Day01.fsi" />
+        <Compile Include="Days\Day01.fs" />
+        <Compile Include="Days\Day02.fsi" />
+        <Compile Include="Days\Day02.fs" />
+        <Compile Include="Days\Day03.fsi" />
+        <Compile Include="Days\Day03.fs" />
+        <Compile Include="Days\Day04.fsi" />
+        <Compile Include="Days\Day04.fs" />
+        <Compile Include="Runner.fsi" />
+        <Compile Include="Runner.fs" />
+        <Compile Include="Program.fs" />
+        <Content Include=".gitignore" />
+    </ItemGroup>
+
+</Project>

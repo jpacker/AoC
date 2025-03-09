@@ -6,3 +6,7 @@
 /2021/cpp/AoC2021/x64
 *.vcxproj.user
 inputs/
+**/.idea/
+**/bin/
+**/obj/
+**/__pycache__/
