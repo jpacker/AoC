@@ -9,7 +9,7 @@ class Coord {
     has Int $.x;
     has Int $.y;
 
-    method WHICH { "{self.^name}|$.x,$.y" }
+    method WHICH { ValueObjAt.new("{self.^name}|$.x,$.y") }
 }
 
 class InstructionActions {
