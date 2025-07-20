@@ -12,7 +12,7 @@ args = parser.parse_args()
 if args.day is None:
     day_mods = {}
 
-    for i in range(9):
+    for i in range(10):
         day_str = f"day{i + 1:02}"
         day_mods[day_str] = run_path(f"{day_str}.py")
 
