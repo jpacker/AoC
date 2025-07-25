@@ -25,7 +25,7 @@ sub addDelta(List $pos, List $delta, @shapedArray) {
     my @newPos = $pos.Array;
     for ^2 {
         my $new = $pos[$_] + $delta[$_];
-        if $new >= 0 && $new < @shapedArray.shape[$_] {
+        if  0 <= $new < @shapedArray.shape[$_] {
             @newPos[$_] = $new;
         }
     }
