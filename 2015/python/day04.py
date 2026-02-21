@@ -20,3 +20,6 @@ def day04():
     part2_val = __solve(6, input)
     print(f"Part 1: {part1_val}")
     print(f"Part 2: {part2_val}")
+
+if __name__ == "__main__":
+   day04()

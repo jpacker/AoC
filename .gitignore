@@ -10,3 +10,10 @@ inputs/
 **/bin/
 **/obj/
 **/__pycache__/
+**/.venv/
+**/.calva/
+**/.clj-kondo/
+**/.lsp/
+**/.build/
+**/.swiftpm/
+.DS_Store
